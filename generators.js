@@ -189,7 +189,7 @@ GeneratorsWrapper.prototype.skipUntil = function(predicate) {
 
 	return this;
 }
-GeneratorsWrapper.prototype.skip = function(n) {
+GeneratorsWrapper.prototype.skip = GeneratorsWrapper.prototype.rest = function(n) {
 	if (n < 1)
 		throw new TypeError('Can\'t take zero or less items!');
 
