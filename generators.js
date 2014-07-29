@@ -154,6 +154,16 @@ GeneratorsWrapper.prototype.reduce = function(fn, initialValue) {
 	return accumulator;
 }
 
+GeneratorsWrapper.prototype.join = function(delimiter) {
+	delimiter = typeof delimiter === "string" ? delimiter : ",";
+
+	return this.reduce(function(str, e) {
+		if (str.length > 0) {
+			str += delimiter;
+		}
+		return str + e;
+	}, "");
+}
 GeneratorsWrapper.prototype.find = function(predicate) {
 	return this.filter(predicate).first().single();
 }
