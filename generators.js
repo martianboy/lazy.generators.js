@@ -83,6 +83,10 @@ GeneratorsWrapper.prototype.map = function(fn, context) {
 		}
 	});
 }
+GeneratorsWrapper.prototype.pluck = function(property) {
+	return this.map(_property(prototype));
+}
+
 GeneratorsWrapper.prototype.filter = function(fn, context) {
 	if (typeof fn !== 'function')
 		throw new TypeError('callback is not a function.');
