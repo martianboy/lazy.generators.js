@@ -58,6 +58,16 @@ GeneratorsWrapper.prototype.each = function(fn, context) {
 			break;
 	}
 }
+GeneratorsWrapper.prototype.indexOf = function indexOf(value) {
+	var foundIndex = -1;
+	this.each(function(e, i) {
+		if (e === value) {
+			foundIndex = i;
+			return false;
+		}
+	});
+	return foundIndex;
+}
 
 GeneratorsWrapper.prototype.map = function(fn, context) {
 	if (typeof fn !== 'function')
