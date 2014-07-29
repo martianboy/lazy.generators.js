@@ -1,7 +1,7 @@
 lazy.generators.js
 ==================
 
-Experimental work with ES6 generators: Lazy.js API using generators.
+Experimental work with ES6 generators: [Lazy.js](https://github.com/dtao/lazy.js) API using generators.
 
 To test in the browser:
 -----------------------
