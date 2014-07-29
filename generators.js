@@ -236,18 +236,34 @@ GeneratorsWrapper.prototype.invoke = function(methodName) {
 	});
 }
 
-GeneratorsWrapper.prototype.take = function(n) {
-	if (n < 1)
-		throw new TypeError('Can\'t take zero or less items!');
+GeneratorsWrapper.prototype.takeUntil = function(predicate) {
+	if (typeof predicate !== 'function')
+		throw new TypeError('callback is not a function.');
 
 	var _internalGenerator = this._internalGenerator;
 
 	return new GeneratorsWrapper(function* () {
 		var genVal, i = 0;
 
-		while(i++ < n && !(genVal = _internalGenerator.next()).done) {
+		while(!(genVal = _internalGenerator.next()).done) {
 			yield genVal.value;
+			if (predicate(genVal.value, i++))
+				break;
 		}
+	});
+}
+GeneratorsWrapper.prototype.takeWhile = function(predicate) {
+	return this.takeUntil(function(value, index) {
+		return !predicate(value, index);
+	});
+}
+
+GeneratorsWrapper.prototype.take = function(n) {
+	if (n < 1)
+		throw new TypeError('Can\'t take zero or less items!');
+
+	return this.takeUntil(function(value, index) {
+		return index === n - 1;
 	});
 };
 
