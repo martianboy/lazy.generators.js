@@ -33,7 +33,7 @@ new Generator(fibonacci)
 	.take(2)
 	.each(function(x) {
 		if (previous)
-			console.log('The Golden Ratio is approximatelay:', (previous + x) / x);
+			console.log('The Golden Ratio is approximately:', (previous + x) / x);
 		previous = x;
 	});
 
