@@ -103,6 +103,10 @@ GeneratorsWrapper.prototype.filter = function(fn, context) {
 		}
 	});
 }
+
+GeneratorsWrapper.prototype.reject = function(fn, context) {
+	return this.filter(function(value, index, wrapper) { return !fn.call(value, index, wrapper); }, context);
+}
 GeneratorsWrapper.prototype.compact = function() {
 	return this.filter(function(value) { return !!value; });
 }
