@@ -164,6 +164,16 @@ GeneratorsWrapper.prototype.join = function(delimiter) {
 		return str + e;
 	}, "");
 }
+GeneratorsWrapper.prototype.max = function() {
+	return this.reduce(function(x, y) { return y > x ? y : x; }, -Infinity);
+}
+GeneratorsWrapper.prototype.min = function() {
+	return this.reduce(function(x, y) { return y < x ? y : x; }, Infinity);
+}
+GeneratorsWrapper.prototype.sum = function() {
+	return this.reduce(function(sum, x) { return sum + x; }, 0);
+}
+
 GeneratorsWrapper.prototype.find = function(predicate) {
 	return this.filter(predicate).first().single();
 }
