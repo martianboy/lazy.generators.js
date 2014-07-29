@@ -110,6 +110,9 @@ GeneratorsWrapper.prototype.reject = function(fn, context) {
 GeneratorsWrapper.prototype.compact = function() {
 	return this.filter(function(value) { return !!value; });
 }
+GeneratorsWrapper.prototype.ofType = function(type) {
+	return this.filter(function(value) { return typeof value === type; });
+}
 
 GeneratorsWrapper.prototype.flatten = function() {
 	var _internalGenerator = this._internalGenerator;
