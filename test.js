@@ -1,10 +1,10 @@
-var Generator = require('./generators');
+var LazyGen = require('./lazy.generators');
 
 /************************************************
  *      Fibonacci Sequence & Golden Ratio       *
  ************************************************/
 console.log('Simple map-filter example: { x^2 | 1 <= x <= 6, x^2 > 10 } ==',
-	new Generator([1,2,3,4,5,6])
+	LazyGen([1,2,3,4,5,6])
 		.map(function(x) { return x * x; })
 		.filter(function(x) { return x > 10; })
 		.toArray()
@@ -28,7 +28,7 @@ function *fibonacci() {
 }
 
 var previous;
-new Generator(fibonacci)
+LazyGen(fibonacci)
 	.skip(25)
 	.take(2)
 	.each(function(x) {
@@ -41,7 +41,11 @@ new Generator(fibonacci)
  *                   Flatten                    *
  ************************************************/
 console.log('Flattened [1, [2, 3, [4, 5], 6, [7]]]:',
-	new Generator([1, [2, 3, [4, 5], 6, [7]]])
+	LazyGen([1, [2, 3, [4, 5], 6, [7]]])
 		.flatten()
 		.toArray()
 );
+
+/************************************************
+ *                   Flatten                    *
+ ************************************************/

@@ -2,7 +2,7 @@
 
 function* makeGeneratorFromArray(array){
 	var nextIndex = 0;
-		
+
 	while(nextIndex < array.length) {
 		yield array[nextIndex++];
 	}
@@ -127,7 +127,7 @@ GeneratorsWrapper.prototype.flatten = function() {
 	}
 	return new GeneratorsWrapper(function* () {
 		yield* flatten(_internalGenerator);
-	});	
+	});
 };
 
 GeneratorsWrapper.prototype.reduce = function(fn, initialValue) {
@@ -283,4 +283,6 @@ GeneratorsWrapper.prototype.single = function() {
 	return genVal.done ? undefined : genVal.value;
 }
 
-module.exports = GeneratorsWrapper;
+module.exports = function(input) {
+	return new GeneratorsWrapper(input);
+};
